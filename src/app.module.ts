@@ -20,6 +20,7 @@ import { ApiModule } from './api/api.module';
         database: configService.get('POSTGRES_DATABASE'),
         autoLoadEntities: true,
         synchronize: true,
+        entities: ['dist/**/*.entity{.ts,.js}'],
       }),
     }),
     ApiModule,
