@@ -1,17 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SiteInfoEntity } from './models/data.entity';
 import { Repository } from 'typeorm';
 import { from, Observable } from 'rxjs';
+import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class ApiService {
-  constructor(
-    @InjectRepository(SiteInfoEntity)
-    private readonly siteInfoRepository: Repository<SiteInfoEntity>,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   getSiteInfo() {
-    return from(this.siteInfoRepository.find());
+    return this.prisma.siteInfo.findMany();
   }
 }

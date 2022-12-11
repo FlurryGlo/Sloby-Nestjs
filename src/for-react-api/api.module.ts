@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
+import { PrismaService } from '../prisma.service';
 import { ApiController } from './api.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { SiteInfoEntity } from './models/data.entity';
 import { ApiService } from './api.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SiteInfoEntity])],
+  imports: [],
   controllers: [ApiController],
-  providers: [ApiService],
+  providers: [ApiService, PrismaService],
 })
 export class ApiModule {}
