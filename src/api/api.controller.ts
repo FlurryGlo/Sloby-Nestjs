@@ -8,6 +8,6 @@ export class ApiController {
 
   @Get('site-info')
   getSiteInfo() {
-    return 'SiteInfo';
+    return this.apiService.getSiteInfo();
   }
 }
