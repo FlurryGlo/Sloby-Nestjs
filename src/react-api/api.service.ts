@@ -16,6 +16,10 @@ export class ApiService {
     return this.prisma.navbarCategories.findMany();
   }
 
+  getUsersLogin() {
+    return 'users login';
+  }
+
   getCategoriesAccounts() {
     return this.prisma.navbarCategories.findMany();
   }
@@ -26,5 +30,13 @@ export class ApiService {
 
   getSlobyTools() {
     return this.prisma.slobyTools.findMany();
+  }
+
+  getUsersCreateAccount() {
+    return 'Getting the users create account';
+  }
+
+  getFooter() {
+    return 'Getting the users footer';
   }
 }

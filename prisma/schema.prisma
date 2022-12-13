@@ -43,3 +43,45 @@ model SlobyTools {
   url       String
   tool      String
 }
+
+model UsersLogin {
+  id              Int    @id @default(autoincrement())
+  title           String
+  forgot_password String
+  small_tag       String
+}
+
+model UsersCreateAccount {
+  id               Int    @id @default(autoincrement())
+  title            String
+  optional_waiting String
+  forgot_password  String
+  button_title     String
+  small_tag        String
+}
+
+model Footer {
+  id                      Int      @id @default(autoincrement())
+  title                   String
+  palceholder             String
+  items                   String[]
+  optional                String[]
+  input                   Boolean
+  icons                   String[]
+  copyright               String
+  news_letter_description String
+  button                  String
+}
+
+model DeclareSlobyTools {
+  id        Int    @id @default(autoincrement())
+  tool_name String
+  url       String
+  tool      String
+}
+
+model SlobyMenuBar {
+  id    Int    @id @default(autoincrement())
+  title String
+  icons String
+}

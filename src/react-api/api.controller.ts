@@ -21,6 +21,11 @@ export class ApiController {
     return this.apiService.getCategoriesAccounts();
   }
 
+  @Get('users-login')
+  getUsersLogin() {
+    return this.apiService.getUsersLogin();
+  }
+
   @Get('sloby-menu-bar')
   getSlobyMenuBar() {
     return this.apiService.getSlobyMenuBar();
@@ -29,5 +34,19 @@ export class ApiController {
   @Get('sloby-tools')
   getSlobyTools() {
     return this.apiService.getSlobyTools();
+  }
+  @Get('footer')
+  getFooter() {
+    return this.apiService.getFooter();
+  }
+
+  @Get('users-create-account')
+  getUsersCreateAccount() {
+    return this.apiService.getUsersCreateAccount();
+  }
+
+  @Get('admin-page')
+  getAdminPage() {
+    return true;
   }
 }
