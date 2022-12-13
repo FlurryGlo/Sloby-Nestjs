@@ -18,3 +18,28 @@ model SiteInfo {
   button_title_get_started String
   img                      String
 }
+
+model NavbarCategories {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
+model CategoriesAccounts {
+  id             Int    @id @default(autoincrement())
+  login_title    String
+  register_title String
+}
+
+model DashboardMenuBar {
+  id    Int    @id @default(autoincrement())
+  title String
+  icon  String
+}
+
+model SlobyTools {
+  id        Int    @id @default(autoincrement())
+  tool_name String
+  url       String
+  tool      String
+}
