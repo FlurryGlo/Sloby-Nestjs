@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model HeaderCategories {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
 model SiteInfo {
   id                       Int    @id @default(autoincrement())
   title                    String

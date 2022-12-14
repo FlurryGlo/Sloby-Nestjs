@@ -16,10 +16,10 @@ export class ApiController {
     return this.apiService.getCategories();
   }
 
-  @Get('categories-accounts')
-  getCategoriesAccounts() {
-    return this.apiService.getCategoriesAccounts();
-  }
+  // @Get('categories-accounts')
+  // getCategoriesAccounts() {
+  //   return this.apiService.getCategoriesAccounts();
+  // }
 
   @Get('users-login')
   getUsersLogin() {
@@ -48,5 +48,10 @@ export class ApiController {
   @Get('admin-page')
   getAdminPage() {
     return true;
+  }
+
+  @Get('header-categories')
+  getHeaderCategories() {
+    return this.apiService.getHeaderCategories();
   }
 }

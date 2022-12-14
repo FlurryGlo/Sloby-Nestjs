@@ -20,10 +20,6 @@ export class ApiService {
     return 'users login';
   }
 
-  getCategoriesAccounts() {
-    return this.prisma.navbarCategories.findMany();
-  }
-
   getSlobyMenuBar() {
     return this.prisma.dashboardMenuBar.findMany();
   }
@@ -38,5 +34,9 @@ export class ApiService {
 
   getFooter() {
     return 'Getting the users footer';
+  }
+
+  getHeaderCategories() {
+    return this.prisma.headerCategories.findMany();
   }
 }
