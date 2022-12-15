@@ -3,14 +3,16 @@ import { User } from '../utils/types';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
+  private readonly users: User[] = [
     {
       userId: 1,
+      name: 'Johnatan',
       username: 'john',
       password: 'changeme',
     },
     {
       userId: 2,
+      name: 'Maria',
       username: 'maria',
       password: 'guess',
     },
