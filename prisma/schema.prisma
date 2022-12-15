@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model HeaderCategories {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
 model SiteInfo {
   id                       Int    @id @default(autoincrement())
   title                    String
@@ -17,4 +23,71 @@ model SiteInfo {
   button_title_docs        String
   button_title_get_started String
   img                      String
+}
+
+model NavbarCategories {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
+model CategoriesAccounts {
+  id             Int    @id @default(autoincrement())
+  login_title    String
+  register_title String
+}
+
+model DashboardMenuBar {
+  id    Int    @id @default(autoincrement())
+  title String
+  icon  String
+}
+
+model SlobyTools {
+  id        Int    @id @default(autoincrement())
+  tool_name String
+  url       String
+  tool      String
+}
+
+model UsersLogin {
+  id              Int    @id @default(autoincrement())
+  title           String
+  forgot_password String
+  small_tag       String
+}
+
+model UsersCreateAccount {
+  id               Int    @id @default(autoincrement())
+  title            String
+  optional_waiting String
+  forgot_password  String
+  button_title     String
+  small_tag        String
+}
+
+model Footer {
+  id                      Int      @id @default(autoincrement())
+  title                   String
+  palceholder             String
+  items                   String[]
+  optional                String[]
+  input                   Boolean
+  icons                   String[]
+  copyright               String
+  news_letter_description String
+  button                  String
+}
+
+model DeclareSlobyTools {
+  id        Int    @id @default(autoincrement())
+  tool_name String
+  url       String
+  tool      String
+}
+
+model SlobyMenuBar {
+  id    Int    @id @default(autoincrement())
+  title String
+  icons String
 }
