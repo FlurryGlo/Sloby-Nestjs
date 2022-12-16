@@ -7,7 +7,7 @@ import {
   Req,
   Body,
 } from '@nestjs/common';
-import { LocalAuthGuard } from './utils/Guards';
+import { AuthenticatedGuard, LocalAuthGuard } from './utils/Guards';
 
 @Controller()
 export class AuthController {
@@ -17,6 +17,7 @@ export class AuthController {
     return req.user;
   }
 
+  @UseGuards(AuthenticatedGuard)
   @Get('protected')
   getProtected() {
     return "You're on a protected route ";
