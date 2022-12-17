@@ -1,4 +1,5 @@
 import {
+  Body,
   ClassSerializerInterceptor,
   Controller,
   Get,
@@ -8,12 +9,15 @@ import {
   Post,
   UseFilters,
   UseInterceptors,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { SerializedUser } from '../../types';
 import { ParseIntPipe } from '@nestjs/common';
 import { UserNotFoundException } from '../exceptions/UserNotFound.exception';
 import { HttpExceptionFiler } from '../filters/HttpException.filter';
+import { CreateUserDto } from '../dto/CreateUser.dto';
 @Controller('users')
 export class UserController {
   constructor(private readonly usersService: UsersService) {}
@@ -42,5 +46,6 @@ export class UserController {
   }
 
   @Post('create')
-  createUser() {}
+  @UsePipes(ValidationPipe)
+  createUser(@Body() createUserDto: CreateUserDto) {}
 }

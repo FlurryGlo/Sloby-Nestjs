@@ -12,10 +12,6 @@ export class ApiService {
     return this.prisma.siteInfo.findMany();
   }
 
-  getCategories() {
-    return this.prisma.navbarCategories.findMany();
-  }
-
   getUsersLogin() {
     return 'users login';
   }

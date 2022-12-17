@@ -11,11 +11,6 @@ export class ApiController {
     return this.apiService.getSiteInfo();
   }
 
-  @Get('categories')
-  getCategories() {
-    return this.apiService.getCategories();
-  }
-
   // @Get('categories-accounts')
   // getCategoriesAccounts() {
   //   return this.apiService.getCategoriesAccounts();
