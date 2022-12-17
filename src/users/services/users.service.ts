@@ -3,6 +3,7 @@ import { SerializedUser, User } from '../../types';
 import { plainToClass } from 'class-transformer';
 import { CreateUserDto } from '../dto/CreateUser.dto';
 import { PrismaService } from '../../prisma.service';
+import { create } from 'domain';
 
 @Injectable()
 export class UsersService {
@@ -22,8 +23,7 @@ export class UsersService {
   }
 
   createUser(createUserDto: CreateUserDto) {
-    const { username, email, password } = createUserDto;
-    console.log(typeof email);
+    return this.prisma.user.create({ data: createUserDto });
   }
 
   async findOne(username: string): Promise<User | undefined> {
