@@ -21,7 +21,10 @@ export class UsersService {
     return this.users.find((u) => u.id === id);
   }
 
-  createUser(createUserDto: CreateUserDto) {}
+  createUser(createUserDto: CreateUserDto) {
+    const { username, email, password } = createUserDto;
+    console.log(typeof email);
+  }
 
   async findOne(username: string): Promise<User | undefined> {
     return this.users.find((user) => user.username === username);
