@@ -1,19 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { SerializedUser, User } from '../utils/types';
+import { SerializedUser, User } from '../../types';
 import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class UsersService {
   private readonly users: User[] = [
     {
-      userId: 1,
-      name: 'Johnatan',
+      id: 1,
       username: 'john',
       password: 'changeme',
     },
     {
-      userId: 2,
-      name: 'Maria',
+      id: 2,
       username: 'maria',
       password: 'guess',
     },
@@ -25,6 +23,10 @@ export class UsersService {
 
   getUserByUsername(username: string) {
     return this.users.find((u) => u.username === username);
+  }
+
+  getUserById(id: number) {
+    return this.users.find((u) => u.id === id);
   }
 
   async findOne(username: string): Promise<User | undefined> {
