@@ -13,6 +13,7 @@ export class HttpExceptionFiler implements ExceptionFilter {
     response.send({
       status: exception.getStatus(),
       message: exception.getResponse(),
+      consumer: 'Gabo',
     });
   }
 }

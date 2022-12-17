@@ -25,12 +25,6 @@ model SiteInfo {
   img                      String
 }
 
-model NavbarCategories {
-  id    Int    @id @default(autoincrement())
-  url   String
-  title String
-}
-
 model CategoriesAccounts {
   id             Int    @id @default(autoincrement())
   login_title    String
@@ -90,4 +84,11 @@ model SlobyMenuBar {
   id    Int    @id @default(autoincrement())
   title String
   icons String
+}
+
+model User {
+  user_id       Int    @id @unique @default(0)
+  username      String
+  email_address String
+  password      String
 }

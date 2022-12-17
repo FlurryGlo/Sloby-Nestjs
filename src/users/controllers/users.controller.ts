@@ -5,6 +5,7 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  Post,
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
@@ -39,4 +40,7 @@ export class UserController {
     if (user) return new SerializedUser(user);
     else throw new UserNotFoundException(null, null, id);
   }
+
+  @Post('create')
+  createUser() {}
 }
