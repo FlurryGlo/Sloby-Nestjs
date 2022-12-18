@@ -92,3 +92,10 @@ model User {
   email    String
   password String @unique
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}

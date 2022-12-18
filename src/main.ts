@@ -2,9 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as session from 'express-session';
 import * as passport from 'passport';
+import { PrismaSessionStore } from '@quixo3/prisma-session-store';
+import { PrismaClient } from '@prisma/client';
 
 async function bootstrap() {
   const { PORT, COOKIE_SECRET } = process.env;
+  const prisma = new PrismaClient();
   const app = await NestFactory.create(AppModule);
   app.enableCors({ origin: ['http://localhost:3000'], credentials: true });
   app.setGlobalPrefix('api');
@@ -17,6 +20,7 @@ async function bootstrap() {
       cookie: {
         maxAge: 60000,
       },
+      store: new PrismaSessionStore(new PrismaClient(), {}),
     }),
   );
 
