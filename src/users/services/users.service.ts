@@ -26,7 +26,7 @@ export class UsersService {
     return this.prisma.user.create({ data: createUserDto });
   }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find((user) => user.username === username);
+  findUserByUsername(username: string) {
+    return this.prisma.user.findUnique({ where: { username } });
   }
 }

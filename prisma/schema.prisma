@@ -88,7 +88,7 @@ model SlobyMenuBar {
 
 model User {
   user_id  Int    @id @unique @default(autoincrement())
-  username String
+  username String @unique
   email    String
-  password String
+  password String @unique
 }

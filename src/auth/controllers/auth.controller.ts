@@ -1,11 +1,11 @@
 import { Controller, Get, Post, UseGuards, Req } from '@nestjs/common';
 import { AuthenticatedGuard, LocalAuthGuard } from '../utils/Guards';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  login(@Req() req) {
+  async login(@Req() req) {
     return req.user;
   }
 
