@@ -18,7 +18,7 @@ async function bootstrap() {
       saveUninitialized: false,
       resave: false,
       cookie: {
-        maxAge: 60000,
+        maxAge: 86400000, // cookie expires 1 day later
       },
       store: new PrismaSessionStore(new PrismaClient(), {}),
     }),
