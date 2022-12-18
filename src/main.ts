@@ -10,12 +10,12 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.use(
     session({
+      name: 'SLOBY_BUILDER_SESSION_ID',
       secret: COOKIE_SECRET,
       saveUninitialized: false,
       resave: false,
-      name: 'SLOBY_APP_SESSION_ID',
       cookie: {
-        maxAge: 86400000,
+        maxAge: 60000,
       },
     }),
   );
