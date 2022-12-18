@@ -4,6 +4,7 @@ import { plainToClass } from 'class-transformer';
 import { CreateUserDto } from '../dto/CreateUser.dto';
 import { PrismaService } from '../../prisma.service';
 import { create } from 'domain';
+import { encodePassword } from '../../auth/utils/bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -11,7 +12,7 @@ export class UsersService {
   private readonly users: User[];
 
   getUsers() {
-    return this.users.map((user) => new SerializedUser(user));
+    return this.prisma.user.findMany();
   }
 
   getUserByUsername(username: string) {
@@ -23,7 +24,15 @@ export class UsersService {
   }
 
   createUser(createUserDto: CreateUserDto) {
-    return this.prisma.user.create({ data: createUserDto });
+    const password = encodePassword(createUserDto.password);
+    console.log(password);
+    return this.prisma.user.create({
+      data: {
+        username: createUserDto.username,
+        email: createUserDto.email,
+        password,
+      },
+    });
   }
 
   findUserByUsername(username: string) {
