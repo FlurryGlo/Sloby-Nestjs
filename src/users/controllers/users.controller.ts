@@ -13,7 +13,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
-import { SerializedUser } from '../../types';
+import { SerializedUser } from '../../utils/types';
 import { ParseIntPipe } from '@nestjs/common';
 import { UserNotFoundException } from '../exceptions/UserNotFound.exception';
 import { HttpExceptionFiler } from '../filters/HttpException.filter';

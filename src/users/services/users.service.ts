@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SerializedUser, User } from '../../types';
+import { SerializedUser, User } from '../../utils/types';
 import { plainToClass } from 'class-transformer';
 import { CreateUserDto } from '../dto/CreateUser.dto';
 import { PrismaService } from '../../prisma.service';
