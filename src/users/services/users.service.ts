@@ -24,9 +24,18 @@ export class UsersService {
   }
 
   async isUserNameTaken(username: string) {
-    const users = await this.prisma.user.findMany();
+    const users = await this.getUsers();
     const isTaken = users.map((user) => {
       return user.username === username;
+    });
+    if (isTaken[0]) return true;
+    return false;
+  }
+
+  async isEmailTaken(email: string) {
+    const users = await this.getUsers();
+    const isTaken = users.map((user) => {
+      return user.email === email;
     });
     if (isTaken[0]) return true;
     return false;

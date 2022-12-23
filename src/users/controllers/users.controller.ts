@@ -51,8 +51,16 @@ export class UserController {
     const isUserNameTaken = await this.usersService.isUserNameTaken(
       createUserDto.username,
     );
-    console.log(isUserNameTaken);
-    if (isUserNameTaken) return 'Username is already taken';
-    return '';
+    const isEmailTaken = await this.usersService.isEmailTaken(
+      createUserDto.email,
+    );
+    const accountIsAlreadyCreated = isEmailTaken && isUserNameTaken;
+    console.log('username: ', isUserNameTaken);
+    console.log('email: ', isEmailTaken);
+    console.log('accountIsAlreadyCreated: ', accountIsAlreadyCreated);
+    if (accountIsAlreadyCreated)
+      return 'Account is already created, you should login';
+    else if (isUserNameTaken) return 'Username is already taken';
+    else if (isEmailTaken) return 'Email has been registered with another user';
   }
 }
