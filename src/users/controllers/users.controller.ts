@@ -62,5 +62,6 @@ export class UserController {
       return 'Account is already created, you should login';
     else if (isUserNameTaken) return 'Username is already taken';
     else if (isEmailTaken) return 'Email has been registered with another user';
+    else return '';
   }
 }
