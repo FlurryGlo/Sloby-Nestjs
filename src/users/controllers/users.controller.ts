@@ -18,6 +18,7 @@ import { ParseIntPipe } from '@nestjs/common';
 import { UserNotFoundException } from '../exceptions/UserNotFound.exception';
 import { HttpExceptionFiler } from '../filters/HttpException.filter';
 import { CreateUserDto } from '../dto/CreateUser.dto';
+import { UsernameIsTakenException } from '../exceptions/UsernameIsTaken';
 @Controller('users')
 export class UserController {
   constructor(private readonly usersService: UsersService) {}
@@ -45,8 +46,13 @@ export class UserController {
     else throw new UserNotFoundException(null, null, id);
   }
 
-  @Post('create')
-  createUser(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.createUser(createUserDto);
+  @Post('register')
+  async createUser(@Body() createUserDto: CreateUserDto) {
+    const isUserNameTaken = await this.usersService.isUserNameTaken(
+      createUserDto.username,
+    );
+    console.log(isUserNameTaken);
+    if (isUserNameTaken) return 'Username is already taken';
+    return '';
   }
 }

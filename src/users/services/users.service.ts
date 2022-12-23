@@ -23,8 +23,18 @@ export class UsersService {
     return this.users.find((u) => u.id === id);
   }
 
+  async isUserNameTaken(username: string) {
+    const users = await this.prisma.user.findMany();
+    const isTaken = users.map((user) => {
+      return user.username === username;
+    });
+    if (isTaken[0]) return true;
+    return false;
+  }
+
   createUser(createUserDto: CreateUserDto) {
     const password = encodePassword(createUserDto.password);
+
     console.log(password);
     return this.prisma.user.create({
       data: {
